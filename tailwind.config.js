@@ -58,6 +58,30 @@ export default {
     {
       pattern: /^text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl)$/,
     },
+    // Add text alignment
+    {
+      pattern: /^text-(left|center|right|justify)$/,
+    },
+    // Add text decoration
+    {
+      pattern: /^(underline|overline|line-through|no-underline)$/,
+    },
+
+    // Add text transform
+    {
+      pattern: /^(uppercase|lowercase|capitalize|normal-case)$/,
+    },
+
+    // Add line height
+    {
+      pattern:
+        /^leading-(none|tight|snug|normal|relaxed|loose|3|4|5|6|7|8|9|10)$/,
+    },
+    // Add letter spacing
+    {
+      pattern: /^tracking-(tighter|tight|normal|wide|wider|widest)$/,
+    },
+
     // Padding and margins
     {
       pattern:
