@@ -95,6 +95,10 @@ export default {
     {
       pattern: /^shadow(-sm|-md|-lg|-xl|-2xl|-inner|-none)?$/,
     },
+    // Border widths - ADD THIS NEW PATTERN
+    {
+      pattern: /^border(-0|-2|-4|-8)?$/,
+    },
     // Width and height
     {
       pattern:
