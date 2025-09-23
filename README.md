@@ -52,6 +52,16 @@ bg-white, bg-black, bg-transparent
 text-red-500, text-blue-500, text-green-500, text-yellow-500, text-purple-500
 text-gray-500, text-slate-500, text-white, text-black
 text-orange-500, text-pink-500, text-indigo-500, text-emerald-500
+text-cyan-500, text-sky-500, text-violet-500, text-fuchsia-500, text-rose-500
+```
+
+### Border Colors
+
+```
+border-red-500, border-blue-500, border-green-500, border-yellow-500, border-purple-500
+border-gray-500, border-slate-500, border-white, border-black
+border-orange-500, border-pink-500, border-indigo-500, border-emerald-500
+border-cyan-500, border-sky-500, border-violet-500, border-fuchsia-500, border-rose-500
 ```
 
 ### Text Sizes
@@ -72,12 +82,27 @@ py-1, py-2, py-3, py-4, py-5, py-6, py-8, py-10
 
 ```
 rounded-none, rounded-sm, rounded, rounded-md, rounded-lg, rounded-xl, rounded-2xl, rounded-3xl, rounded-full
+rounded-t-none, rounded-t-sm, rounded-t, rounded-t-md, rounded-t-lg, rounded-t-xl
+rounded-r-none, rounded-r-sm, rounded-r, rounded-r-md, rounded-r-lg, rounded-r-xl
+rounded-b-none, rounded-b-sm, rounded-b, rounded-b-md, rounded-b-lg, rounded-b-xl
+rounded-l-none, rounded-l-sm, rounded-l, rounded-l-md, rounded-l-lg, rounded-l-xl
+```
+
+### Border Widths
+
+```
+border-0, border, border-2, border-4, border-8
+border-t-0, border-t, border-t-2, border-t-4, border-t-8
+border-r-0, border-r, border-r-2, border-r-4, border-r-8
+border-b-0, border-b, border-b-2, border-b-4, border-b-8
+border-l-0, border-l, border-l-2, border-l-4, border-l-8
 ```
 
 ### Shadows
 
 ```
 shadow-sm, shadow, shadow-md, shadow-lg, shadow-xl, shadow-2xl, shadow-none
+shadow-inner
 ```
 
 ### Hover Effects
@@ -137,14 +162,14 @@ scale-95, scale-105, scale-110
   <p className="text-slate-600">Card description goes here</p>
 </div>
 
-<div className="bg-slate-100 rounded-xl shadow-lg p-8 border">
+<div className="bg-slate-100 rounded-xl shadow-lg p-8 border-2 border-blue-300">
   <h3 className="text-2xl font-bold mb-4">Featured Card</h3>
-  <p className="text-gray-700">This is a featured card with more padding</p>
+  <p className="text-gray-700">This is a featured card with thick border</p>
 </div>
 
-<div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg p-6">
+<div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg p-6 border-4 border-purple-300">
   <h3 className="text-xl font-semibold mb-2">Gradient Card</h3>
-  <p className="opacity-90">Beautiful gradient background</p>
+  <p className="opacity-90">Beautiful gradient background with very thick border</p>
 </div>
 ```
 
@@ -173,6 +198,8 @@ Add onClick functionality to your buttons:
 - **Accessibility**: Always add `focus:` states for keyboard navigation
 - **Gradients**: Use `bg-gradient-to-r from-blue-500 to-purple-500` for beautiful gradients
 - **Responsive**: Add `lg:` prefixes for desktop-specific styles
+- **Border combinations**: Mix border widths and colors: `"border-4 border-red-500"`
+- **Rounded corners**: Use different corner radii: `"rounded-t-lg rounded-b-none"`
 
 ## Color Families
 
