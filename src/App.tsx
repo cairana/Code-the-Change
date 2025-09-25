@@ -8,6 +8,17 @@ interface Template {
 
 const templates: Template[] = [
   {
+    name: "Hej World",
+    emoji: "👋",
+    code: `<!-- This is your first web page! -->
+<h1 class="text-slate-700 font-poppins text-center text-4xl font-light">
+  Hej World!
+</h1>
+<p class="text-slate-500 font-nunito text-center text-lg mt-6">
+  Welcome to coding! Let's create something beautiful together.
+</p>`,
+  },
+  {
     name: "Hello World",
     emoji: "�",
     code: `<!-- This is your first web page! -->
@@ -19,75 +30,73 @@ const templates: Template[] = [
 </p>`,
   },
   {
-    name: "Dancing Circles",
-    emoji: "✨",
-    code: `<!-- Three circles that bounce up and down! -->
-<div class="flex justify-center items-center h-48 gap-5">
-  <div class="circle pink-circle"></div>
-  <div class="circle blue-circle"></div>  
-  <div class="circle purple-circle"></div>
+    name: "Calm Circles",
+    emoji: "○",
+    code: `<!-- Three circles with gentle movement -->
+<div class="flex justify-center items-center h-48 gap-8">
+  <div class="circle sage-circle"></div>
+  <div class="circle sky-circle"></div>  
+  <div class="circle stone-circle"></div>
 </div>
 
-<!-- The styles make the magic happen -->
+<!-- Subtle, natural styling -->
 <style>
-  /* Basic circle shape */
   .circle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%; /* This makes it round! */
-    animation: bounce 1s infinite; /* Makes it bounce forever */
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    animation: gentle-float 3s ease-in-out infinite;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   }
   
-  /* Different colors for each circle */
-  .pink-circle {
-    background: linear-gradient(45deg, #ff9a9e, #fecfef);
+  .sage-circle {
+    background: linear-gradient(135deg, #a8b5a0, #c4d1bd);
   }
   
-  .blue-circle {
-    background: linear-gradient(45deg, #a8edea, #fed6e3);
-    animation-delay: 0.2s; /* Starts bouncing slightly later */
+  .sky-circle {
+    background: linear-gradient(135deg, #b8c5d1, #d4e0ed);
+    animation-delay: 1s;
   }
   
-  .purple-circle {
-    background: linear-gradient(45deg, #fad0c4, #ffd1ff);
-    animation-delay: 0.4s; /* Starts bouncing even later */
+  .stone-circle {
+    background: linear-gradient(135deg, #c1b5a3, #ddd0be);
+    animation-delay: 2s;
   }
   
-  /* The bouncing animation */
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); } /* Start and end position */
-    50% { transform: translateY(-30px); } /* Jump up! */
+  @keyframes gentle-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
   }
 </style>`,
   },
   {
-    name: "Fun Button",
-    emoji: "🔮",
-    code: `<!-- An interactive button that changes! -->
-<button class="bg-gradient-to-r from-orange-400 to-red-500 text-white px-8 py-4 rounded-full font-bangers text-lg cursor-pointer block mx-auto my-5 hover:scale-105 transition-transform" onclick="changeColor()">
-  ✨ Click Me! ✨
+    name: "Nordic Button",
+    emoji: "◆",
+    code: `<!-- A clean, minimalist button -->
+<button class="bg-slate-600 hover:bg-slate-700 text-white px-12 py-4 rounded-lg font-poppins font-medium cursor-pointer block mx-auto my-8 transition-all duration-200 shadow-lg hover:shadow-xl" onclick="changeTheme()">
+  Change Theme
 </button>
 
-<p id="message" class="text-center font-kalam text-lg text-gray-600">
-  Try clicking the button above!
+<p id="message" class="text-center font-nunito text-slate-600 text-lg">
+  Click to discover new colors
 </p>
 
-<!-- JavaScript makes it interactive! -->
+<!-- Simple, elegant interaction -->
 <script>
-  function changeColor() {
-    const colors = [
-      'from-pink-400 to-purple-500',
-      'from-blue-400 to-cyan-500', 
-      'from-green-400 to-lime-500',
-      'from-orange-400 to-yellow-500'
+  function changeTheme() {
+    const themes = [
+      { bg: 'bg-emerald-600 hover:bg-emerald-700', name: 'Forest Theme' },
+      { bg: 'bg-blue-600 hover:bg-blue-700', name: 'Ocean Theme' },
+      { bg: 'bg-amber-600 hover:bg-amber-700', name: 'Autumn Theme' },
+      { bg: 'bg-slate-600 hover:bg-slate-700', name: 'Stone Theme' }
     ];
+    
     const button = document.querySelector('button');
-    const randomGradient = colors[Math.floor(Math.random() * colors.length)];
+    const randomTheme = themes[Math.floor(Math.random() * themes.length)];
     
-    // Remove old gradient classes and add new ones
-    button.className = 'bg-gradient-to-r text-white px-8 py-4 rounded-full font-bangers text-lg cursor-pointer block mx-auto my-5 hover:scale-105 transition-transform ' + randomGradient;
+    button.className = button.className.replace(/bg-\w+-\d+\s+hover:bg-\w+-\d+/g, randomTheme.bg);
     
-    document.getElementById('message').textContent = 'Wow! The colors changed! 🌈';
+    document.getElementById('message').textContent = randomTheme.name + ' activated!';
   }
 </script>`,
   },
@@ -102,27 +111,26 @@ function App() {
   }, [selectedTemplate]);
 
   return (
-    <div className="min-h-screen gradient-bg">
+    <div className="min-h-screen bg-slate-50">
       {/* Header */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-        <div className="relative z-10 px-4 py-8 text-center">
-          <div className="float-animation inline-block">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg font-fredoka">
-              Code Playground
+      <div className="relative bg-white shadow-sm">
+        <div className="container mx-auto px-4 py-6 md:py-12 text-center">
+          <div className="inline-block">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-light text-slate-700 mb-3 md:mb-4 font-poppins">
+              Code Studio
             </h1>
           </div>
 
           {/* Template Buttons */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-4 md:mb-8">
             {templates.map((template, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedTemplate(index)}
-                className={`template-button px-4 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 ${
+                className={`template-button px-3 py-2 md:px-6 md:py-3 rounded-lg font-nunito font-medium transition-all duration-200 text-sm md:text-base ${
                   selectedTemplate === index
-                    ? "bg-white text-purple-600 shadow-lg"
-                    : "bg-white/20 text-white hover:bg-white/30"
+                    ? "bg-slate-600 text-white shadow-md"
+                    : "bg-white text-slate-600 shadow-sm hover:shadow-md border border-slate-200"
                 }`}
               >
                 {template.emoji} {template.name}
@@ -133,52 +141,61 @@ function App() {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 pb-8">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+      <div className="container mx-auto px-2 md:px-4 py-4 md:py-8">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
           {/* Code Editor Section */}
-          <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-6">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center space-x-2">
-                <span className="text-white text-2xl">💻</span>
-                <h2 className="text-xl font-bold text-white font-bungee">
-                  Your Code
-                </h2>
-              </div>
+          <div className="border-b border-slate-200 p-4 md:p-8">
+            <div className="flex items-center justify-between mb-4 md:mb-6">
+              <h2 className="text-lg md:text-xl font-poppins font-medium text-slate-700">
+                Your Code
+              </h2>
             </div>
 
             <textarea
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              className="w-full h-64 md:h-80 p-4 rounded-xl code-editor text-sm resize-none focus:outline-none focus:ring-4 focus:ring-purple-300 transition-all custom-scrollbar touch-manipulation font-roboto"
-              placeholder="Write your HTML and CSS here... Don't worry, you can't break anything! ✨"
+              className="w-full h-48 md:h-64 lg:h-80 p-3 md:p-6 rounded-xl bg-slate-50 border border-slate-200 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-slate-300 focus:border-transparent transition-all font-roboto"
+              placeholder="Write your HTML and CSS here... Clean and simple."
               spellCheck={false}
-              style={{ fontSize: "16px" }} // Prevents zoom on iOS
+              style={{ fontSize: "16px" }}
             />
           </div>
 
           {/* Preview Section */}
-          <div className="p-6">
-            <div className="flex items-center space-x-2 mb-4">
-              <h2 className="text-xl font-bold text-gray-800 font-bungee">
+          <div className="p-4 md:p-8">
+            <div className="flex items-center space-x-2 mb-4 md:mb-6">
+              <h2 className="text-lg md:text-xl font-poppins font-medium text-slate-700">
                 Live Preview
               </h2>
             </div>
 
-            <div className="bg-gray-50 rounded-xl border-2 border-dashed border-purple-200 min-h-64 p-6 relative overflow-auto custom-scrollbar">
+            <div className="bg-slate-50 rounded-xl border border-slate-200 min-h-48 md:min-h-64 p-3 md:p-6 relative overflow-auto">
               <div
                 dangerouslySetInnerHTML={{ __html: code }}
                 className="preview-content"
               />
 
               {!code.trim() && (
-                <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                  <div className="text-center">
-                    <p className="font-pacifico">
-                      Your awesome creation will appear here! ✨
+                <div className="absolute inset-0 flex items-center justify-center text-slate-400">
+                  <div className="text-center px-4">
+                    <p className="font-nunito text-sm md:text-base">
+                      Your creation will appear here
                     </p>
                   </div>
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* Footer */}
+          <div className="bg-slate-50 border-t border-slate-200 p-4 md:p-8 text-center">
+            <p className="text-slate-500 mb-3 font-nunito text-sm md:text-base">
+              Clean code. Beautiful results. Start creating.
+            </p>
+            <div className="flex justify-center space-x-4 md:space-x-8 text-xs md:text-sm text-slate-400 font-poppins">
+              <span>Minimalist</span>
+              <span>Functional</span>
+              <span>Elegant</span>
             </div>
           </div>
         </div>
