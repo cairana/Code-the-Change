@@ -58,42 +58,11 @@ const templates: Template[] = [
   }
 </style>`,
   },
-  {
-    name: "Nordic Button",
-    emoji: "◆",
-    code: `<!-- A clean, minimalist button -->
-<button class="bg-slate-600 hover:bg-slate-700 text-white px-12 py-4 rounded-lg font-poppins font-medium cursor-pointer block mx-auto my-8 transition-all duration-200 shadow-lg hover:shadow-xl" onclick="changeTheme()">
-  Change Theme
-</button>
-
-<p id="message" class="text-center font-nunito text-slate-600 text-lg">
-  Click to discover new colors
-</p>
-
-<!-- Simple, elegant interaction -->
-<script>
-  function changeTheme() {
-    const themes = [
-      { bg: 'bg-emerald-600 hover:bg-emerald-700', name: 'Forest Theme' },
-      { bg: 'bg-blue-600 hover:bg-blue-700', name: 'Ocean Theme' },
-      { bg: 'bg-amber-600 hover:bg-amber-700', name: 'Autumn Theme' },
-      { bg: 'bg-slate-600 hover:bg-slate-700', name: 'Stone Theme' }
-    ];
-    
-    const button = document.querySelector('button');
-    const randomTheme = themes[Math.floor(Math.random() * themes.length)];
-    
-    button.className = button.className.replace(/bg-\w+-\d+\s+hover:bg-\w+-\d+/g, randomTheme.bg);
-    
-    document.getElementById('message').textContent = randomTheme.name + ' activated!';
-  }
-</script>`,
-  },
 ];
 
 function App() {
-  const [code, setCode] = useState<string>(templates[0].code);
-  const [selectedTemplate, setSelectedTemplate] = useState<number>(0);
+  const [code, setCode] = useState(templates[0].code);
+  const [selectedTemplate, setSelectedTemplate] = useState(0);
 
   useEffect(() => {
     setCode(templates[selectedTemplate].code);
@@ -158,7 +127,7 @@ function App() {
               </h2>
             </div>
 
-            <div className="bg-slate-50 rounded-xl border border-slate-200 min-h-48 md:min-h-64 p-3 md:p-6 relative overflow-auto">
+            <div className="bg-slate-50 rounded-xl border border-slate-200 min-h-48 md:min-h-64 p-3 md:p-6 relative overflow-visible">
               <div
                 dangerouslySetInnerHTML={{ __html: code }}
                 className="preview-content"
