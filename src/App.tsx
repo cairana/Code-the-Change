@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 interface Template {
   name: string;
@@ -8,25 +8,14 @@ interface Template {
 
 const templates: Template[] = [
   {
-    name: "Hej World",
+    name: "Hello World",
     emoji: "👋",
     code: `<!-- This is your first web page! -->
 <h1 class="text-slate-700 font-poppins text-center text-4xl font-light">
-  Hej World!
+  Hello World!
 </h1>
 <p class="text-slate-500 font-nunito text-center text-lg mt-6">
   Welcome to coding! Let's create something beautiful together.
-</p>`,
-  },
-  {
-    name: "Hello World",
-    emoji: "�",
-    code: `<!-- This is your first web page! -->
-<h1 class="text-purple-600 font-fredoka text-center text-4xl font-bold">
-  Hello World!
-</h1>
-<p class="text-pink-500 font-pacifico text-center text-xl mt-4">
-  Welcome to coding! 🎉
 </p>`,
   },
   {
@@ -103,8 +92,8 @@ const templates: Template[] = [
 ];
 
 function App() {
-  const [code, setCode] = useState(templates[0].code);
-  const [selectedTemplate, setSelectedTemplate] = useState(0);
+  const [code, setCode] = useState<string>(templates[0].code);
+  const [selectedTemplate, setSelectedTemplate] = useState<number>(0);
 
   useEffect(() => {
     setCode(templates[selectedTemplate].code);
@@ -184,18 +173,6 @@ function App() {
                   </div>
                 </div>
               )}
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div className="bg-slate-50 border-t border-slate-200 p-4 md:p-8 text-center">
-            <p className="text-slate-500 mb-3 font-nunito text-sm md:text-base">
-              Clean code. Beautiful results. Start creating.
-            </p>
-            <div className="flex justify-center space-x-4 md:space-x-8 text-xs md:text-sm text-slate-400 font-poppins">
-              <span>Minimalist</span>
-              <span>Functional</span>
-              <span>Elegant</span>
             </div>
           </div>
         </div>
